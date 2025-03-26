@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="page">
+    <h1>Register</h1>
+    <form action="register.php" method="POST"> <!--creates forms for each category/label-->
+        <p>
+            <label for="name">First Name:</label>
+            <input type="text" id="name" name="name" required></p>
+        <p>
+            <label for="surname">Last Name:</label>
+            <input type="text" id="surname" name="surname" required></p>
+        <p>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required></p>
+        <p>
+            <label for="confirm email">Confirm Email:</label>
+            <input type="email" id="confirm email" name="confirm email" required></p>
+        <p>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required></p>
+        <p>
+            <label for="confirm password">Confirm Password</label>
+            <input type="password" id="confirm password" name="confirm password" required></p>
+        <p>
+            <button type="submit" class="button">Register</button></p>
+        <p id="error message" style="color: red;"></p>
+    </form>
+    <script> /*validation to ensure email address contains @ and both emails are same and passwords are same*/
+        document.getElementById('registerForm').addEventListener('submit',function(event){
+            let email = document.getElementById('email').value;
+            let confirmEmail = document.getElementById('confirm email').value;
+            let errorMessage = document.getElementById('error-message');
+            let password = document.getElementById('password').value;
+            let confirmPassword = document.getElementById('confirm password').value;
+
+            if (!email.includes("@")) {
+                event.preventDefault(); //stops form submission
+                errorMessage.textContent = 'Please enter a valid email address.'; /*the error message that will be outputted*/
+            } else if (email !== confirmEmail) {
+                event.preventDefault();
+                errorMessage.textContent = 'Please make sure both email addresses match.';
+            } else if (password !== confirmPassword) {
+                event.preventDefault();
+                errorMessage.textContent = 'Passwords do not match.';
+            } else {
+                errorMessage.textContent = "";
+            }
+        });
+    </script>
+
+    <p>Already have an account? <a href="login.html"class="button">Sign in here</a></p>
+    <a href="index.html" class="button">Back to Home</a>
+
+</div>
+
+</body>
+</html>
