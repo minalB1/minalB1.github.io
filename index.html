@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+        function G_Map() {
+            var mapProp = {
+                center: new google.maps.Lating(51.512098, -0.130289),
+                zoom: 12,
+                mapTypeId: google.maps.MapTypeID.SATELLITE,
+            };
+            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        }
+        google.maps.event.addDomListener(window,'load', G_Map);
+    </script>
 </head>
 <body>
 <div id="page">
@@ -15,17 +27,6 @@
 
 <h2>Don't have an account yet?</h2>
 <a href="register.html" class="button">create an account</a>
-
-<script src="http://maps.googleapis.com/maps/api.js"></script>
-
-<script>
-    function G_Map() {
-        var mapProp = {
-            center:new google.maps.LatLng(15.043535, 14.102983),
-            zoom: 7,
-            mapTypeId:google.maps.MapTypeId.ROADMAP
-        };
-</script>
 
 </div>
 </body>
